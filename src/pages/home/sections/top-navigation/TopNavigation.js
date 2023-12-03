@@ -1,6 +1,7 @@
 import "./TopNavigation.css";
 import cartIcon from "../../../../assets/cart.svg";
 import logo from "../../../../assets/logo-white.svg";
+import { Meal } from "../menu/Menu";
 
 const links = [
     { text: "Home", link: "https://google.com" },

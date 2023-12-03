@@ -4,6 +4,34 @@ import starFilled from "../../../../assets/star-filled.svg";
 import starEmpty from "../../../../assets/star-empty.svg";
 import "./Menu.css";
 
+const Star = (props) => {
+    return (
+        <img
+            src={props.number ? starFilled : starEmpty}
+            alt={props.number ? "Filled Star" : "Empty Star"}
+        />
+    );
+};
+
+export const Meal = (props) => {
+    return (
+        <div className="card">
+            <img src={props.img} alt={props.name} className="card__img" />
+            <h3 className="card__title">{props.name}</h3>
+            <div className="menu-section__stars">
+                {props.rating.map((number, idx) => {
+                    return <Star number={number} key={idx} />;
+                })}
+            </div>
+            <p className="card__text">{props.description}</p>
+            <div className="card__footer">
+                <span className="menu-section__price">{props.price}</span>
+                <button className="btn btn-md btn-orange">Order Now</button>
+            </div>
+        </div>
+    );
+};
+
 class Menu extends React.Component {
     render() {
         return (
@@ -22,41 +50,14 @@ class Menu extends React.Component {
                     <div className="menu-section__meals">
                         {meals.map((meal, idx) => {
                             return (
-                                <div className="card" key={idx}>
-                                    <img
-                                        src={meal.img}
-                                        alt={meal.name}
-                                        className="card__img"
-                                    />
-                                    <h3 className="card__title">{meal.name}</h3>
-                                    <div className="menu-section__stars">
-                                        {meal.rating.map((number, idx) => {
-                                            return (
-                                                <img
-                                                    src={
-                                                        number
-                                                            ? starFilled
-                                                            : starEmpty
-                                                    }
-                                                    alt={
-                                                        number
-                                                            ? "Filled Star"
-                                                            : "Empty Star"
-                                                    }
-                                                ></img>
-                                            );
-                                        })}
-                                    </div>
-                                    <p className="card__text">{meal.text}</p>
-                                    <div className="card__footer">
-                                        <span className="menu-section__price">
-                                            {meal.price}
-                                        </span>
-                                        <button className="btn btn-md btn-orange">
-                                            Order Now
-                                        </button>
-                                    </div>
-                                </div>
+                                <Meal
+                                    key={idx}
+                                    name={meal.name}
+                                    price={meal.price}
+                                    description={meal.text}
+                                    rating={meal.rating}
+                                    img={meal.img}
+                                />
                             );
                         })}
                     </div>

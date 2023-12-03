@@ -4,8 +4,6 @@ import rovioli from "../../../../assets/menu-rovioli.png";
 import penneAllaVodak from "../../../../assets/menu-penne-alla-vodak.png";
 import risoto from "../../../../assets/menu-risoto.png";
 import splitza from "../../../../assets/menu-splitza.png";
-import starFilled from "../../../../assets/star-filled.svg";
-import starEmpty from "../../../../assets/star-empty.svg";
 import "./Menu.css";
 
 export const meals = [
